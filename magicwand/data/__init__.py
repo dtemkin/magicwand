@@ -37,6 +37,8 @@ class VariableWrapper(UserDict):
 class VariablesContainer(UserDict):
 
     def __init__(self, **items):
+        '''
+        '''
         super().__init__(items)
 
     def get_variable(self, name):
@@ -79,6 +81,17 @@ class Dataset(object):
 
     def __init__(self, X=None, y=None, random_seed=None, x_opts=None,
                  y_opts=None):
+        '''
+        Initialize a Dataset
+
+        Params
+        ------
+         param X: VariablesContainer() (Default=None)
+         param y: VariablesContainer() (Default=None)
+         param random_seed: RandomState() (Default=None)
+         param x_opts: dict (Default=None)
+         param y_opts: dict (Default=None)
+        '''
         self._X = VariablesContainer()
         self._y = VariablesContainer()
         x_opts = ({} if not x_opts else x_opts)
@@ -139,12 +152,11 @@ class Dataset(object):
         return self._num_targets
 
     def get_variables(self, varset, *names):
+        '''
+        '''
         v = (self._X if varset == 'x' else self._y)
         for name in names:
             yield v.get_variable(name)
-
-    def get_sample(self, i):
-        return
 
     @staticmethod
     def _norm_valid_size(train_sz, valid_sz):

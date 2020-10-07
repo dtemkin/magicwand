@@ -1,1 +1,1 @@
-__all__ = ['fileops', 'itertoolsx']
+__all__ = ['fileops', 'itertoolsx','data']
